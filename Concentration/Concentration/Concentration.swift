@@ -36,11 +36,17 @@ class Concentration
     }
     
     init(numberOfPairsOfCards: Int){
-        for _ in 1...numberOfPairsOfCards {
+        for _ in 0..<numberOfPairsOfCards {
             let card = Card()
             cards += [card, card]
         }
+        shuffleCards()
     }
     
-    //TODO shuffle cards
+    func shuffleCards() {
+        for _ in 0..<cards.count {
+            // sort seems better than .swap()
+            cards.sort(by: {_,_ in arc4random() > arc4random()})
+        }
+    }
 }
