@@ -12,13 +12,17 @@ class ViewController: UIViewController {
     
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
     
-    var flipCount = 0 {didSet { flipCountLabel.text = "Flip Count: \(flipCount)" }}
+    var flipCount = 0 { didSet { flipCountLabel.text = "Flip Count: \(flipCount)" } }
+    var scoreCount = 0 { didSet { scoreCountLabel.text = "Score: \(scoreCount)"} }
     
+    @IBOutlet weak var scoreCountLabel: UILabel!
     @IBOutlet weak var flipCountLabel: UILabel!
     
     @IBOutlet var cardButtons: [UIButton]!
 
     @IBAction func touchCard(_ sender: UIButton) {
+        flipCount = game.flipCount
+        scoreCount = game.score
         if let cardNumber = cardButtons.index(of: sender){
             if !game.cards[cardNumber].isMatched { flipCount += 1 }
             game.chooseCard(at: cardNumber)
@@ -29,13 +33,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchNewGame(_ sender: UIButton) {
-        // reset count
-        flipCount = 0
         // reset game
         game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
         // reset theme choices
         emojiChoices = theme.getRandomThemeIcons()
         // update view
+        scoreCount = game.score
+        flipCount = game.flipCount
         updateViewFromModel()
     }
     
