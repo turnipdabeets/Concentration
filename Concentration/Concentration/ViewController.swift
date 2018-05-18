@@ -29,8 +29,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchNewGame(_ sender: UIButton) {
+        // reset count
         flipCount = 0
+        // reset game
         game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+        // reset theme choices
+        emojiChoices = theme.getRandomThemeIcons()
+        // update view
         updateViewFromModel()
     }
     
@@ -47,17 +52,17 @@ class ViewController: UIViewController {
             }
         }
     }
+    var theme = Theme()
     
-    var emojiChoices = ["👻", "😈", "👹", "👺", "🎃", "☠️", "🦇", "💀"]
-    
+    lazy var emojiChoices = theme.getRandomThemeIcons()
+
     var emoji = [Int: String]()
-    
+
     func emoji(for card: Card) -> String {
         if emoji[card.identifier] == nil {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
             emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
         }
-        
         return emoji[card.identifier] ?? "?"
     }
 }
