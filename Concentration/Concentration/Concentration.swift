@@ -16,30 +16,44 @@ class Concentration
     
     var indexOfOneAndOnlyFaceUp: Int?
     
+    var selectedIndex = Set<Int>()
+    var lastIndexWasSelected = false
+    
     func chooseCard(at index: Int){
-        flipCount += 1
+        let cardWasPreviouslySelected = selectedIndex.contains(index)
         if !cards[index].isMatched {
+            // only flip cards that are visible
+            flipCount += 1
             if let matchIndex = indexOfOneAndOnlyFaceUp, matchIndex != index {
                 // 2 cards are face up, check if cards match
                 if cards[index].identifier == cards[matchIndex].identifier {
                     cards[index].isMatched = true
                     cards[matchIndex].isMatched = true
-                    score += 2
+                    if lastIndexWasSelected {
+                        // add extra to account for subtracting earlier
+                        score += 3
+                    } else {
+                        score += 2
+                    }
                 }else {
                     // no match
-                    score -= 1
+                    if cardWasPreviouslySelected {score -= 1}
                 }
                 cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUp = nil
             } else {
                 // one card is selected, turn down other cards and set this card
+                if cardWasPreviouslySelected { score -= 1 }
                 for flipDownIndex in cards.indices {
                     cards[flipDownIndex].isFaceUp = false
                 }
                 cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUp = index
+                lastIndexWasSelected = cardWasPreviouslySelected
             }
         }
+        
+        selectedIndex.insert(index)
     }
     
     init(numberOfPairsOfCards: Int){

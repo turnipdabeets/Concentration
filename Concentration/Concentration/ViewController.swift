@@ -21,10 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet var cardButtons: [UIButton]!
 
     @IBAction func touchCard(_ sender: UIButton) {
-        flipCount = game.flipCount
-        scoreCount = game.score
         if let cardNumber = cardButtons.index(of: sender){
-            if !game.cards[cardNumber].isMatched { flipCount += 1 }
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
         }else {
@@ -38,12 +35,12 @@ class ViewController: UIViewController {
         // reset theme choices
         emojiChoices = theme.getRandomThemeIcons()
         // update view
-        scoreCount = game.score
-        flipCount = game.flipCount
         updateViewFromModel()
     }
     
     func updateViewFromModel(){
+        flipCount = game.flipCount
+        scoreCount = game.score
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
