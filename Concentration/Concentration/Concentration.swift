@@ -36,6 +36,7 @@ class Concentration
     private var lastIndexWasSelected = false
     
     func chooseCard(at index: Int){
+        assert(cards.indices.contains(index), "Concentration.chooseCard(at:\(index)): index is not in the cards")
         let cardWasPreviouslySelected = selectedIndex.contains(index)
         if !cards[index].isMatched {
             // only flip cards that are visible
@@ -68,6 +69,7 @@ class Concentration
     }
     
     init(numberOfPairsOfCards: Int){
+        assert(numberOfPairsOfCards > 0, "Concentraation.init(numberOfPairsOfCards:\(numberOfPairsOfCards) you must have multiple pairs of cards")
         for _ in 0..<numberOfPairsOfCards {
             let card = Card()
             cards += [card, card]
