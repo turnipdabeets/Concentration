@@ -248,11 +248,22 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nice work! 👍" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9L-tg-Vhy">
+                                <rect key="frame" x="98.333333333333329" y="384" width="177.33333333333337" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Uef-vd-gxx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="KoL-5C-Br9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="0Wh-KL-Jsg"/>
                             <constraint firstItem="dDh-me-JCE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Do0-MN-C5A"/>
+                            <constraint firstItem="t9L-tg-Vhy" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zmW-db-CpR" secondAttribute="bottom" constant="28" id="I5w-Zp-7ZA"/>
+                            <constraint firstItem="t9L-tg-Vhy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Igu-FK-wHs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KoL-5C-Br9" secondAttribute="trailing" constant="16" id="Jqe-l1-mNN"/>
                             <constraint firstItem="KoL-5C-Br9" firstAttribute="top" secondItem="EJd-53-j16" secondAttribute="bottom" constant="16" id="LvX-5E-muU"/>
                             <constraint firstItem="zmW-db-CpR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PFU-5V-sjn"/>
@@ -262,11 +273,13 @@
                             <constraint firstItem="EJd-53-j16" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="bGn-zq-smh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zmW-db-CpR" secondAttribute="trailing" constant="16" id="nbM-Qm-tYg"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dDh-me-JCE" secondAttribute="trailing" constant="20" symbolic="YES" id="nz3-zS-epj"/>
+                            <constraint firstItem="t9L-tg-Vhy" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="rwA-3e-diN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KoL-5C-Br9" secondAttribute="bottom" constant="16" id="wjg-y8-kzS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="finishedLabel" destination="t9L-tg-Vhy" id="NTW-hg-Irt"/>
                         <outlet property="flipCountLabel" destination="EJd-53-j16" id="WKT-iM-M5d"/>
                         <outlet property="scoreCountLabel" destination="dDh-me-JCE" id="RLT-t3-CoT"/>
                         <outletCollection property="cardButtons" destination="Iew-W1-y3y" collectionClass="NSMutableArray" id="vyv-Lp-GmK"/>
@@ -289,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+            <point key="canvasLocation" x="136.80000000000001" y="132.26600985221674"/>
         </scene>
     </scenes>
 </document>

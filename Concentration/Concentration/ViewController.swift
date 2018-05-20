@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         return (cardButtons.count + 1) / 2
     }
     
+    @IBOutlet weak var finishedLabel: UILabel!
     private var flipCount = 0 { didSet { flipCountLabel.text = "Flip Count: \(flipCount)" } }
     private var scoreCount = 0 { didSet { scoreCountLabel.text = "Score: \(scoreCount)"} }
     
@@ -56,6 +57,8 @@ class ViewController: UIViewController {
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
             }
         }
+        finishedLabel.textColor = game.allCardsHaveBeenMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) : #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 0)
+        finishedLabel.text = game.score >= 0 ? "Nice work! 👍" : "Phew, 🐻ly made it"
     }
     private var theme = Theme()
     

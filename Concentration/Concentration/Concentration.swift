@@ -34,6 +34,13 @@ class Concentration
     
     private var selectedIndex = Set<Int>()
     private var lastIndexWasSelected = false
+    /// returns true if all cards have been matched
+    var allCardsHaveBeenMatched: Bool {
+        for index in cards.indices {
+            if !cards[index].isMatched { return false }
+        }
+        return true
+    }
     
     /**
      Choose a card at an index.
