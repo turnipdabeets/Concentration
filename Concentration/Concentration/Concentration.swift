@@ -14,7 +14,23 @@ class Concentration
     var score = 0
     var flipCount = 0
     
-    var indexOfOneAndOnlyFaceUp: Int?
+    var indexOfOneAndOnlyFaceUp: Int? {
+        get {
+            var foundIndex: Int?
+            for index in cards.indices {
+                if cards[index].isFaceUp {
+                    foundIndex = (foundIndex == nil) ? index : nil
+                }
+            }
+            return foundIndex
+        }
+        
+        set {
+            for flipDownIndex in cards.indices {
+                cards[flipDownIndex].isFaceUp = (flipDownIndex == newValue)
+            }
+        }
+    }
     
     var selectedIndex = Set<Int>()
     var lastIndexWasSelected = false
@@ -40,14 +56,9 @@ class Concentration
                     if cardWasPreviouslySelected {score -= 1}
                 }
                 cards[index].isFaceUp = true
-                indexOfOneAndOnlyFaceUp = nil
             } else {
                 // one card is selected, turn down other cards and set this card
                 if cardWasPreviouslySelected { score -= 1 }
-                for flipDownIndex in cards.indices {
-                    cards[flipDownIndex].isFaceUp = false
-                }
-                cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUp = index
                 lastIndexWasSelected = cardWasPreviouslySelected
             }
