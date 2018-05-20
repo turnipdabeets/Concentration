@@ -10,11 +10,11 @@ import Foundation
 
 class Concentration
 {
-    var cards = [Card]()
-    var score = 0
-    var flipCount = 0
+    private(set) var cards = [Card]()
+    private(set) var score = 0
+    private(set) var flipCount = 0
     
-    var indexOfOneAndOnlyFaceUp: Int? {
+    private var indexOfOneAndOnlyFaceUp: Int? {
         get {
             var foundIndex: Int?
             for index in cards.indices {
@@ -32,8 +32,8 @@ class Concentration
         }
     }
     
-    var selectedIndex = Set<Int>()
-    var lastIndexWasSelected = false
+    private var selectedIndex = Set<Int>()
+    private var lastIndexWasSelected = false
     
     func chooseCard(at index: Int){
         let cardWasPreviouslySelected = selectedIndex.contains(index)
@@ -75,7 +75,7 @@ class Concentration
         shuffleCards()
     }
     
-    func shuffleCards() {
+    private func shuffleCards() {
         for _ in 0..<cards.count {
             // sort seems better than .swap()
             cards.sort(by: {_,_ in arc4random() > arc4random()})

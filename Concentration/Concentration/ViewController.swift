@@ -10,14 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+    private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
     
     var numberOfPairsOfCards: Int {
         return (cardButtons.count + 1) / 2
     }
     
-    var flipCount = 0 { didSet { flipCountLabel.text = "Flip Count: \(flipCount)" } }
-    var scoreCount = 0 { didSet { scoreCountLabel.text = "Score: \(scoreCount)"} }
+    private var flipCount = 0 { didSet { flipCountLabel.text = "Flip Count: \(flipCount)" } }
+    private var scoreCount = 0 { didSet { scoreCountLabel.text = "Score: \(scoreCount)"} }
     
     @IBOutlet weak var scoreCountLabel: UILabel!
     @IBOutlet weak var flipCountLabel: UILabel!
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
-    func updateViewFromModel(){
+    private func updateViewFromModel(){
         flipCount = game.flipCount
         scoreCount = game.score
         for index in cardButtons.indices {
@@ -57,13 +57,13 @@ class ViewController: UIViewController {
             }
         }
     }
-    var theme = Theme()
+    private var theme = Theme()
     
-    lazy var emojiChoices = theme.getRandomThemeIcons()
+    private lazy var emojiChoices = theme.getRandomThemeIcons()
 
-    var emoji = [Int: String]()
+    private var emoji = [Int: String]()
 
-    func emoji(for card: Card) -> String {
+    private func emoji(for card: Card) -> String {
         if emoji[card.identifier] == nil {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
             emoji[card.identifier] = emojiChoices.remove(at: randomIndex)

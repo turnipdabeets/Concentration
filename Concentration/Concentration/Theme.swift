@@ -36,7 +36,7 @@ class Theme
         }
     }
         
-    func random() -> Theme {
+    private func random() -> Theme {
         let max = Theme.weather.rawValue
         let randomIndex = arc4random_uniform(max + UInt32(1))
         return Theme(rawValue: randomIndex) ?? Theme.halloween
