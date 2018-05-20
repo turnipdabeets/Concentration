@@ -7,7 +7,12 @@
 //
 
 import Foundation
-
+/**
+ a game card that contains the following var:
+ - isFaceUp
+ - isMatched
+ - identifier
+ */
 struct Card
 {
     var isFaceUp = false

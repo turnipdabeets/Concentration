@@ -19,6 +19,7 @@ class Theme
         case weather
     }
     
+    /// get an array of icons by theme
     func getThemeIcons(by theme: Theme) -> [String] {
         switch theme {
         case .halloween:
@@ -41,7 +42,13 @@ class Theme
         let randomIndex = arc4random_uniform(max + UInt32(1))
         return Theme(rawValue: randomIndex) ?? Theme.halloween
     }
-    
+ 
+    /**
+     get a random array of themed icons
+     
+     - Author:
+     Anna
+     */
     func getRandomThemeIcons() ->[String] {
         return getThemeIcons(by: random())
     }

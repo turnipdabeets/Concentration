@@ -35,6 +35,10 @@ class Concentration
     private var selectedIndex = Set<Int>()
     private var lastIndexWasSelected = false
     
+    /**
+     Choose a card at an index.
+     Handles flip count, if a card is faced up, and matching of cards
+     */
     func chooseCard(at index: Int){
         assert(cards.indices.contains(index), "Concentration.chooseCard(at:\(index)): index is not in the cards")
         let cardWasPreviouslySelected = selectedIndex.contains(index)
