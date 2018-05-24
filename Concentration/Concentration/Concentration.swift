@@ -54,7 +54,7 @@ struct Concentration
             flipCount += 1
             if let matchIndex = indexOfOneAndOnlyFaceUp, matchIndex != index {
                 // 2 cards are face up, check if cards match
-                if cards[index].identifier == cards[matchIndex].identifier {
+                if cards[index] == cards[matchIndex] {
                     cards[index].isMatched = true
                     cards[matchIndex].isMatched = true
                     if lastIndexWasSelected {

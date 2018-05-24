@@ -64,14 +64,13 @@ class ViewController: UIViewController {
     
     private lazy var emojiChoices = theme.getRandomThemeIcons()
 
-    private var emoji = [Int: String]()
+    private var emoji = [Card: String]()
 
     private func emoji(for card: Card) -> String {
-        if emoji[card.identifier] == nil {
-            let randomIndex = emojiChoices.count.arc4random
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+        if emoji[card] == nil, emojiChoices.count > 0 {
+            emoji[card] = emojiChoices.remove(at: emojiChoices.count.arc4random)
         }
-        return emoji[card.identifier] ?? "?"
+        return emoji[card] ?? "?"
     }
 }
 
