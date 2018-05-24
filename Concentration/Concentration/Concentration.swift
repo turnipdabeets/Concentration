@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Concentration
+struct Concentration
 {
     private(set) var cards = [Card]()
     private(set) var score = 0
@@ -46,7 +46,7 @@ class Concentration
      Choose a card at an index.
      Handles flip count, if a card is faced up, and matching of cards
      */
-    func chooseCard(at index: Int){
+    mutating func chooseCard(at index: Int){
         assert(cards.indices.contains(index), "Concentration.chooseCard(at:\(index)): index is not in the cards")
         let cardWasPreviouslySelected = selectedIndex.contains(index)
         if !cards[index].isMatched {
@@ -88,7 +88,7 @@ class Concentration
         shuffleCards()
     }
     
-    private func shuffleCards() {
+    mutating private func shuffleCards() {
         for _ in 0..<cards.count {
             // sort seems better than .swap()
             cards.sort(by: {_,_ in arc4random() > arc4random()})
