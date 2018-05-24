@@ -18,25 +18,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var finishedLabel: UILabel!
     @IBOutlet weak var scoreCountLabel: UILabel!
-    @IBOutlet weak var flipCountLabel: UILabel! {
-        didSet {
-            updateFlipCountLabel()
-        }
-    }
+    @IBOutlet weak var flipCountLabel: UILabel!
     
     private var flipCount = 0 {
         didSet {
-            updateFlipCountLabel()
+            flipCountLabel.text = "Flip Count: \(flipCount)"
         }
-    }
-    
-    private func updateFlipCountLabel() {
-        let attribute: [NSAttributedStringKey: Any] = [
-            .strokeWidth: 5.0,
-            .strokeColor: #colorLiteral(red: 0.9607843161, green: 0.9548751531, blue: 0.1539729279, alpha: 1),
-        ]
-        let attributedString = NSAttributedString(string: "Flip Count: \(flipCount)", attributes: attribute)
-        flipCountLabel.attributedText = attributedString
     }
     
     private var scoreCount = 0 { didSet { scoreCountLabel.text = "Score: \(scoreCount)"} }
