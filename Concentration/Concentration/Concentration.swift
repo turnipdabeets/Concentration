@@ -16,13 +16,7 @@ struct Concentration
     
     private var indexOfOneAndOnlyFaceUp: Int? {
         get {
-            var foundIndex: Int?
-            for index in cards.indices {
-                if cards[index].isFaceUp {
-                    foundIndex = (foundIndex == nil) ? index : nil
-                }
-            }
-            return foundIndex
+            return cards.indices.filter({cards[$0].isFaceUp}).oneAndOnly
         }
         
         set {
@@ -93,5 +87,11 @@ struct Concentration
             // sort seems better than .swap()
             cards.sort(by: {_,_ in arc4random() > arc4random()})
         }
+    }
+}
+
+extension Collection {
+    var oneAndOnly: Element? {
+        return count == 1 ? first : nil
     }
 }
